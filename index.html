@@ -193,6 +193,15 @@
       letter-spacing: 0.08em;
     }
 
+    .project-card-image {
+      width: 100%;
+      height: 168px;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid var(--border);
+      background: #fff;
+    }
+
     .project-content {
       padding: 20px;
       display: flex;
@@ -347,6 +356,69 @@
       background: #fff;
     }
 
+    .media-image.clickable {
+      cursor: zoom-in;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    .media-image.clickable:hover {
+      transform: translateY(-1px);
+      opacity: 0.94;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(15, 23, 42, 0.82);
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      position: relative;
+      width: min(100%, 1100px);
+      max-height: 90vh;
+      display: grid;
+      gap: 12px;
+    }
+
+    .lightbox img {
+      width: 100%;
+      max-height: 82vh;
+      object-fit: contain;
+      border-radius: 14px;
+      background: #fff;
+    }
+
+    .lightbox-caption {
+      color: #fff;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -14px;
+      right: -14px;
+      border: 1px solid rgba(255,255,255,0.4);
+      background: #fff;
+      color: var(--accent);
+      border-radius: 999px;
+      width: 38px;
+      height: 38px;
+      font-size: 1.35rem;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+
     .media-figure figcaption {
       color: var(--muted);
       font-size: 0.88rem;
@@ -446,7 +518,7 @@
             </a>
 
             <a class="project-card" href="#schaak-analyse" data-route="schaak-analyse">
-              <div class="mock-image">Demo screen</div>
+              <img src="assets/images/schaak-analyse/schaak-dashboard-analyse.png" alt="Voorbeeld van het Power BI-rapport voor de schaakprestatie-analyse" class="project-card-image">
               <div class="project-content">
                 <h3>Schaakprestatie-analyse</h3>
                 <p>Data-analyseproject rond schaakprestaties, opgebouwd met een eigen database en Power BI-rapport.</p>
@@ -561,15 +633,15 @@
           <div class="case-block media-grid">
             <h2>Demo media</h2>
             <figure class="media-figure">
-              <img src="assets/images/schaak-analyse/schaak-dashboard-overzicht.png" alt="Power BI-dashboard voor de schaakprestatie-analyse" class="media-image">
+              <img src="assets/images/schaak-analyse/schaak-dashboard-overzicht.png" alt="Power BI-dashboard voor de schaakprestatie-analyse" class="media-image clickable" data-lightbox-src="assets/images/schaak-analyse/schaak-dashboard-overzicht.png" data-lightbox-caption="Power BI-dashboard met overzicht van de schaakprestaties.">
               <figcaption>Power BI-dashboard met overzicht van de schaakprestaties.</figcaption>
             </figure>
             <figure class="media-figure">
-              <img src="assets/images/schaak-analyse/schaak-dashboard-analyse.png" alt="Analyseweergave van het schaakrapport in Power BI" class="media-image">
+              <img src="assets/images/schaak-analyse/schaak-dashboard-analyse.png" alt="Analyseweergave van het schaakrapport in Power BI" class="media-image clickable" data-lightbox-src="assets/images/schaak-analyse/schaak-dashboard-analyse.png" data-lightbox-caption="Analyseweergave met inzichten rond resultaten en prestaties.">
               <figcaption>Analyseweergave met inzichten rond resultaten en prestaties.</figcaption>
             </figure>
             <figure class="media-figure">
-              <img src="assets/images/schaak-analyse/schaak-datamodel-erd.png" alt="Datamodel van het schaakproject in Power BI" class="media-image">
+              <img src="assets/images/schaak-analyse/schaak-datamodel-erd.png" alt="Datamodel van het schaakproject in Power BI" class="media-image clickable" data-lightbox-src="assets/images/schaak-analyse/schaak-datamodel-erd.png" data-lightbox-caption="Datamodel / ERD waarmee de onderliggende schaakdata werd gestructureerd.">
               <figcaption>Datamodel / ERD waarmee de onderliggende schaakdata werd gestructureerd.</figcaption>
             </figure>
           </div>
@@ -602,6 +674,13 @@
       </div>
     </section>
   </main>
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Afbeelding sluiten">×</button>
+      <img id="lightboxImage" src="" alt="Uitvergrote afbeelding">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
 
   <footer>
     <div class="container">
@@ -613,6 +692,10 @@
     const pages = document.querySelectorAll('.home-page, .project-page');
     const routeLinks = document.querySelectorAll('[data-route]');
     const year = document.getElementById('year');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose = document.getElementById('lightboxClose');
 
     year.textContent = new Date().getFullYear();
 
@@ -646,6 +729,35 @@
     window.addEventListener('popstate', () => {
       const route = location.hash.replace('#', '') || 'home';
       showRoute(route);
+    });
+
+    document.querySelectorAll('[data-lightbox-src]').forEach(image => {
+      image.addEventListener('click', () => {
+        lightboxImage.src = image.getAttribute('data-lightbox-src');
+        lightboxCaption.textContent = image.getAttribute('data-lightbox-caption') || image.alt || '';
+        lightbox.classList.add('active');
+        lightbox.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImage.src = '';
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+
+    lightbox.addEventListener('click', event => {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    window.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightbox();
+      }
     });
 
     const initialRoute = location.hash.replace('#', '') || 'home';
