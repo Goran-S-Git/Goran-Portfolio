@@ -129,6 +129,12 @@
       margin-bottom: 28px;
     }
 
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
     section {
       padding: 56px 0;
     }
@@ -222,6 +228,21 @@
       font-weight: 600;
     }
 
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .skill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
     .project-page {
       display: none;
       padding: 44px 0 72px;
@@ -313,6 +334,25 @@
       font-weight: 700;
     }
 
+    .media-figure {
+      display: grid;
+      gap: 8px;
+    }
+
+    .media-image {
+      width: 100%;
+      display: block;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #fff;
+    }
+
+    .media-figure figcaption {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.4;
+    }
+
     footer {
       border-top: 1px solid var(--border);
       padding: 32px 0;
@@ -322,6 +362,7 @@
 
     @media (max-width: 900px) {
       .project-grid,
+      .skills,
       .case-grid {
         grid-template-columns: 1fr 1fr;
       }
@@ -338,6 +379,7 @@
       }
 
       .project-grid,
+      .skills,
       .case-grid {
         grid-template-columns: 1fr;
       }
@@ -381,11 +423,7 @@
               <div class="project-content">
                 <h3>PUR Tool – Excel/VBA-automatisering</h3>
                 <p>Automatisering van complexe berekeningen, controles en outputflows binnen een administratief proces.</p>
-                <div class="tags">
-                  <span class="tag">Excel</span>
-                  <span class="tag">VBA</span>
-                  <span class="tag">Automatisering</span>
-                </div>
+                <div class="tags"><span class="tag">Excel</span><span class="tag">VBA</span><span class="tag">Automatisering</span></div>
               </div>
             </a>
 
@@ -394,11 +432,7 @@
               <div class="project-content">
                 <h3>PUR Database – Access-datamodel</h3>
                 <p>Relationele database voor dossiers, afspraken, historiek, importcontrole en rapportering.</p>
-                <div class="tags">
-                  <span class="tag">Access</span>
-                  <span class="tag">Datamodel</span>
-                  <span class="tag">Datakwaliteit</span>
-                </div>
+                <div class="tags"><span class="tag">Access</span><span class="tag">Datamodel</span><span class="tag">Datakwaliteit</span></div>
               </div>
             </a>
 
@@ -407,11 +441,7 @@
               <div class="project-content">
                 <h3>OWOW – MS365 & SharePoint-adoptie</h3>
                 <p>Structuur, begeleiding en praktische toepassing bij de overgang naar een gestandaardiseerde MS365-werkwijze.</p>
-                <div class="tags">
-                  <span class="tag">MS365</span>
-                  <span class="tag">SharePoint</span>
-                  <span class="tag">Change</span>
-                </div>
+                <div class="tags"><span class="tag">MS365</span><span class="tag">SharePoint</span><span class="tag">Change</span></div>
               </div>
             </a>
 
@@ -420,11 +450,7 @@
               <div class="project-content">
                 <h3>Schaakprestatie-analyse</h3>
                 <p>Data-analyseproject rond schaakprestaties, opgebouwd met een eigen database en Power BI-rapport.</p>
-                <div class="tags">
-                  <span class="tag">Power BI</span>
-                  <span class="tag">Analyse</span>
-                  <span class="tag">Database</span>
-                </div>
+                <div class="tags"><span class="tag">Power BI</span><span class="tag">Analyse</span><span class="tag">Database</span></div>
               </div>
             </a>
 
@@ -433,11 +459,7 @@
               <div class="project-content">
                 <h3>Analyse van data-vacatures</h3>
                 <p>Toekomstig portfolio-project rond gevraagde skills, functietitels en regio’s binnen data-gerelateerde jobs.</p>
-                <div class="tags">
-                  <span class="tag">Power Query</span>
-                  <span class="tag">Power BI</span>
-                  <span class="tag">Career data</span>
-                </div>
+                <div class="tags"><span class="tag">Power Query</span><span class="tag">Power BI</span><span class="tag">Career data</span></div>
               </div>
             </a>
           </div>
@@ -526,20 +548,30 @@
         <div class="project-hero">
           <div class="eyebrow">Power BI · Database · Analyse</div>
           <h1>Schaakprestatie-analyse</h1>
-          <p>Een data-analyseproject rond schaakprestaties, met een eigen database en rapportering om patronen in partijen en vooruitgang te onderzoeken.</p>
+          <p>Een persoonlijk data-analyseproject waarin schaakpartijen werden gestructureerd, gemodelleerd en gevisualiseerd in Power BI.</p>
         </div>
         <div class="case-grid">
           <div class="case-block">
             <h2>Case study</h2>
-            <p><strong>Context.</strong> Het doel was om persoonlijke schaakprestaties meetbaar te maken en te onderzoeken waar verbetering mogelijk is.</p>
-            <p><strong>Mijn rol.</strong> Ik bouwde een database from scratch en maakte een Power BI-rapport met analysevragen rond resultaten, openingen en fouttypes.</p>
-            <p><strong>Oplossing.</strong> Partijgegevens worden gestructureerd opgeslagen en gevisualiseerd in dashboards.</p>
-            <p><strong>Resultaat.</strong> Een concreet voorbeeld van datamodellering en analyse op een niet-bedrijfsgevoelig onderwerp.</p>
+            <p><strong>Context.</strong> Tijdens mijn opleiding data-analyse werkte ik aan een persoonlijk project rond schaakprestaties. Het doel was om eigen partijen niet alleen individueel te bekijken, maar structureel te analyseren op basis van data.</p>
+            <p><strong>Mijn rol.</strong> Ik bouwde een database from scratch, ontwierp het datamodel en maakte een Power BI-rapport om patronen in resultaten, openingen en prestaties zichtbaar te maken.</p>
+            <p><strong>Oplossing.</strong> De gegevens werden gestructureerd in tabellen en relaties, waarna Power BI werd gebruikt voor visualisaties en analysevragen.</p>
+            <p><strong>Resultaat.</strong> Het project toont hoe ruwe of verspreide informatie kan worden omgezet naar een analyseerbaar datamodel en een visueel rapport.</p>
           </div>
           <div class="case-block media-grid">
             <h2>Demo media</h2>
-            <div class="media-placeholder">Placeholder: Power BI-dashboard</div>
-            <div class="media-placeholder">Placeholder: schaakdatamodel</div>
+            <figure class="media-figure">
+              <img src="assets/images/schaak-analyse/schaak-dashboard-overzicht.png" alt="Power BI-dashboard voor de schaakprestatie-analyse" class="media-image">
+              <figcaption>Power BI-dashboard met overzicht van de schaakprestaties.</figcaption>
+            </figure>
+            <figure class="media-figure">
+              <img src="assets/images/schaak-analyse/schaak-dashboard-analyse.png" alt="Analyseweergave van het schaakrapport in Power BI" class="media-image">
+              <figcaption>Analyseweergave met inzichten rond resultaten en prestaties.</figcaption>
+            </figure>
+            <figure class="media-figure">
+              <img src="assets/images/schaak-analyse/schaak-datamodel-erd.png" alt="Datamodel van het schaakproject in Power BI" class="media-image">
+              <figcaption>Datamodel / ERD waarmee de onderliggende schaakdata werd gestructureerd.</figcaption>
+            </figure>
           </div>
         </div>
       </div>
