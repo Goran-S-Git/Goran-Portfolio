@@ -103,8 +103,20 @@
       color: var(--accent);
     }
 
+    .button.linkedin {
+      background: #0a66c2;
+      border-color: #0a66c2;
+      color: #fff;
+    }
+
+    .button.linkedin:hover {
+      background: #004182;
+      border-color: #004182;
+      color: #fff;
+    }
+
     .hero {
-      padding: 84px 0 64px;
+      padding: 84px 0 32px;
     }
 
     .eyebrow {
@@ -115,7 +127,7 @@
     }
 
     .hero h1 {
-      font-size: clamp(2rem, 5vw, 4.2rem);
+      font-size: clamp(1.65rem, 4vw, 3.2rem);
       line-height: 0.98;
       letter-spacing: -0.07em;
       max-width: 980px;
@@ -137,6 +149,10 @@
 
     section {
       padding: 56px 0;
+    }
+
+    #projecten {
+      padding-top: 28px;
     }
 
     .section-heading {
@@ -467,7 +483,7 @@
     <div class="container nav">
       <div class="brand">Goran Schittekatte</div>
       <nav class="nav-links">
-        <a class="button secondary" href="https://www.linkedin.com/in/goran-schittekatte-006a83198" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="button linkedin" href="https://www.linkedin.com/in/goran-schittekatte-006a83198" target="_blank" rel="noreferrer">LinkedIn</a>
       </nav>
     </div>
   </header>
@@ -518,11 +534,14 @@
             </a>
 
             <a class="project-card" href="#schaak-analyse" data-route="schaak-analyse">
-              <img src="assets/images/schaak-analyse/schaak-dashboard-analyse.png" alt="Voorbeeld van het Power BI-rapport voor de schaakprestatie-analyse" class="project-card-image">
+              <img src="assets/images/schaak-analyse/Demo-afbeelding-schaak.png" alt="Demo-afbeelding van het schaakproject" class="project-card-image">
               <div class="project-content">
                 <h3>Verbeter je schaakspel met data: Een persoonlijke case study.</h3>
                 <p>Data-analyseproject rond schaakprestaties, opgebouwd met een eigen database en Power BI-rapport.</p>
-                <div class="tags"><span class="tag">Power BI</span><span class="tag">Analyse</span><span class="tag">Database</span></div>
+                <div class="tags"><span class="tag">Python</span>
+                  <span class="tag">Database</span>
+                  <span class="tag">SQL</span>
+                  <span class="tag">Power BI</span></div>
               </div>
             </a>
 
