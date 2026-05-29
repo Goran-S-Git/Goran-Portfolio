@@ -142,12 +142,6 @@
       margin-bottom: 28px;
     }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
     section {
       padding: 56px 0;
     }
@@ -167,11 +161,6 @@
     .section-heading h2 {
       font-size: clamp(1.8rem, 3vw, 2.6rem);
       letter-spacing: -0.05em;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-      max-width: 560px;
     }
 
     .project-grid {
@@ -259,21 +248,6 @@
       padding: 6px 10px;
       font-size: 0.8rem;
       font-weight: 600;
-    }
-
-    .skills {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .skill {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 16px;
-      font-weight: 700;
-      color: var(--accent);
     }
 
     .project-page {
@@ -395,6 +369,12 @@
       opacity: 0.94;
     }
 
+    .media-figure figcaption {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.4;
+    }
+
     .lightbox {
       position: fixed;
       inset: 0;
@@ -448,12 +428,6 @@
       box-shadow: var(--shadow);
     }
 
-    .media-figure figcaption {
-      color: var(--muted);
-      font-size: 0.88rem;
-      line-height: 1.4;
-    }
-
     footer {
       border-top: 1px solid var(--border);
       padding: 32px 0;
@@ -463,7 +437,6 @@
 
     @media (max-width: 900px) {
       .project-grid,
-      .skills,
       .case-grid {
         grid-template-columns: 1fr 1fr;
       }
@@ -480,7 +453,6 @@
       }
 
       .project-grid,
-      .skills,
       .case-grid {
         grid-template-columns: 1fr;
       }
@@ -524,7 +496,11 @@
               <div class="project-content">
                 <h3>PUR Tool – Excel/VBA-automatisering</h3>
                 <p>Automatisering van complexe berekeningen, controles en outputflows binnen een administratief proces.</p>
-                <div class="tags"><span class="tag">Excel</span><span class="tag">VBA</span><span class="tag">Automatisering</span></div>
+                <div class="tags">
+                  <span class="tag">Excel</span>
+                  <span class="tag">VBA</span>
+                  <span class="tag">Automatisering</span>
+                </div>
               </div>
             </a>
 
@@ -533,7 +509,11 @@
               <div class="project-content">
                 <h3>PUR Database – Access-datamodel</h3>
                 <p>Relationele database voor dossiers, afspraken, historiek, importcontrole en rapportering.</p>
-                <div class="tags"><span class="tag">Access</span><span class="tag">Datamodel</span><span class="tag">Datakwaliteit</span></div>
+                <div class="tags">
+                  <span class="tag">Access</span>
+                  <span class="tag">Datamodel</span>
+                  <span class="tag">Datakwaliteit</span>
+                </div>
               </div>
             </a>
 
@@ -542,7 +522,11 @@
               <div class="project-content">
                 <h3>OWOW – MS365 & SharePoint-adoptie</h3>
                 <p>Structuur, begeleiding en praktische toepassing bij de overgang naar een gestandaardiseerde MS365-werkwijze.</p>
-                <div class="tags"><span class="tag">MS365</span><span class="tag">SharePoint</span><span class="tag">Change</span></div>
+                <div class="tags">
+                  <span class="tag">MS365</span>
+                  <span class="tag">SharePoint</span>
+                  <span class="tag">Change</span>
+                </div>
               </div>
             </a>
 
@@ -551,10 +535,12 @@
               <div class="project-content">
                 <h3>Verbeter je schaakspel met data: Een persoonlijke case study.</h3>
                 <p>Data-analyseproject rond schaakprestaties, opgebouwd met een eigen database en Power BI-rapport.</p>
-                <div class="tags"><span class="tag">Python</span>
+                <div class="tags">
+                  <span class="tag">Python</span>
                   <span class="tag">Database</span>
                   <span class="tag">SQL</span>
-                  <span class="tag">Power BI</span></div>
+                  <span class="tag">Power BI</span>
+                </div>
               </div>
             </a>
 
@@ -563,7 +549,11 @@
               <div class="project-content">
                 <h3>Analyse van data-vacatures</h3>
                 <p>Toekomstig portfolio-project rond gevraagde skills, functietitels en regio’s binnen data-gerelateerde jobs.</p>
-                <div class="tags"><span class="tag">Power Query</span><span class="tag">Power BI</span><span class="tag">Career data</span></div>
+                <div class="tags">
+                  <span class="tag">Power Query</span>
+                  <span class="tag">Power BI</span>
+                  <span class="tag">Career data</span>
+                </div>
               </div>
             </a>
           </div>
@@ -654,29 +644,42 @@
         <div class="case-grid">
           <div class="case-block">
             <h2>Case study</h2>
+
             <p><strong>Context.</strong> Voor mijn eindwerk binnen de opleiding Data Analist onderzocht ik hoe ik mijn schaakspel kon verbeteren met behulp van data.</p>
+
             <p><strong>Waarom.</strong> Ik schaakte al jaren bijna dagelijks en toch steeg mijn ELO-score niet, hij daalde zelfs. De bedoeling van deze analyse was om tot een concreet plan van aanpak te komen, wat ik dan in de praktijk zou toepassen.</p>
+
             <p><strong>Aanpak.</strong> Dit project werd volledig van de grond af gebouwd. De data verzamelen, modelleren, analyseren en visualiseren gebeurde from scratch. Hiervoor gebruikte ik Python, PowerShell, SQL Server, Stockfish en Power BI.</p>
+
             <p>Ik haalde enkele miljoenen schaakspellen uit de Lichess open source database en vergeleek die met mijn eigen schaakpartijen. Daarnaast verrijkte ik de data met extra kenmerken zoals opening, spelfase, ELO-bereik, blunders, enzovoort.</p>
+
             <p>Blunders, grote fouten in een schaakspel, waren een stuk informatie dat ik per se wou hebben voor mijn analyse. Met een Python-script liet ik alle schaakspellen één voor één analyseren door de schaakengine Stockfish om telkens de blunders eruit te halen.</p>
+
             <p>Daarna moesten al die blunders nog in categorieën opgedeeld worden om er een duidelijke visual van te kunnen maken. Omdat blunders categoriseren een menselijke interpretatie blijft en afhangt van de huidige situatie op het bord, gebruikte ik opnieuw een Python-script met API-calls naar OpenAI om deze taak per spel uit te voeren aan de hand van een prompt.</p>
+
             <p>In Power BI bouwde ik rapportpagina’s om mijn huidige situatie te schetsen, om de beste openingen voor elke kleur te vinden en om mijn belangrijkste pijnpunten inzichtelijk te maken.</p>
+
             <p><strong>Resultaat.</strong> De analyse leidde tot een concreet actieplan: langere speltypes spelen, partijen achteraf analyseren met Stockfish, gerichter openingen instuderen en schaakpuzzels oefenen rond mijn grootste zwaktes. Dit project toont hoe ruwe data kan worden omgezet naar een datamodel, interactieve rapportering en bruikbare inzichten.</p>
+
             <a class="button secondary document-link" href="assets/documents/schaak-analyse/schaak-analyse-paper.pdf" target="_blank" rel="noreferrer">Bekijk de volledige paper</a>
           </div>
+
           <div class="case-block media-grid">
             <figure class="media-figure">
               <img src="assets/images/schaak-analyse/schaak-dashboard-overzicht.png" alt="Situatieschets van de schaakprestatie-analyse" class="media-image clickable" data-lightbox-src="assets/images/schaak-analyse/schaak-dashboard-overzicht.png" data-lightbox-caption="Reden van dit project: Mijn schaakspel verbetert niet. Integendeel!">
               <figcaption>Reden van dit project: Mijn schaakspel verbetert niet. Integendeel!</figcaption>
             </figure>
+
             <figure class="media-figure">
               <img src="assets/images/schaak-analyse/schaak-dashboard-analyse.png" alt="Analyse van de grootste pijnpunten in het schaakrapport" class="media-image clickable" data-lightbox-src="assets/images/schaak-analyse/schaak-dashboard-analyse.png" data-lightbox-caption="Analyse: mijn grootste pijnpunten.">
               <figcaption>Analyse: mijn grootste pijnpunten.</figcaption>
             </figure>
+
             <figure class="media-figure">
               <img src="assets/images/schaak-analyse/schaak-dashboard-openingen.png" alt="Analyse van de beste schaakopeningen" class="media-image clickable" data-lightbox-src="assets/images/schaak-analyse/schaak-dashboard-openingen.png" data-lightbox-caption="Analyse: Wat zijn de beste schaakopeningen?">
               <figcaption>Analyse: Wat zijn de beste schaakopeningen?</figcaption>
             </figure>
+
             <figure class="media-figure">
               <img src="assets/images/schaak-analyse/schaak-datamodel-erd.png" alt="ERD van het schaakproject in Power BI" class="media-image clickable" data-lightbox-src="assets/images/schaak-analyse/schaak-datamodel-erd.png" data-lightbox-caption="ERD: Hoe de data gemodelleerd is.">
               <figcaption>ERD: Hoe de data gemodelleerd is.</figcaption>
@@ -710,6 +713,7 @@
       </div>
     </section>
   </main>
+
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <div class="lightbox-content">
       <button class="lightbox-close" id="lightboxClose" aria-label="Afbeelding sluiten">×</button>
