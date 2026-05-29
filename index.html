@@ -654,10 +654,14 @@
         <div class="case-grid">
           <div class="case-block">
             <h2>Case study</h2>
-            <p><strong>Context.</strong> Tijdens mijn opleiding data-analyse werkte ik aan een persoonlijk project rond schaakprestaties. Het doel was om eigen partijen niet alleen individueel te bekijken, maar structureel te analyseren op basis van data.</p>
-            <p><strong>Mijn rol.</strong> Ik bouwde een database from scratch, ontwierp het datamodel en maakte een Power BI-rapport om patronen in resultaten, openingen en prestaties zichtbaar te maken.</p>
-            <p><strong>Oplossing.</strong> De gegevens werden gestructureerd in tabellen en relaties, waarna Power BI werd gebruikt voor visualisaties en analysevragen.</p>
-            <p><strong>Resultaat.</strong> Het project toont hoe ruwe of verspreide informatie kan worden omgezet naar een analyseerbaar datamodel en een visueel rapport.</p>
+            <p><strong>Context.</strong> Voor mijn eindwerk binnen de opleiding Data Analist onderzocht ik hoe ik mijn schaakspel kon verbeteren met behulp van data.</p>
+            <p><strong>Waarom.</strong> Ik schaakte al jaren bijna dagelijks en toch steeg mijn ELO-score niet, hij daalde zelfs. De bedoeling van deze analyse was om tot een concreet plan van aanpak te komen, wat ik dan in de praktijk zou toepassen.</p>
+            <p><strong>Aanpak.</strong> Dit project werd volledig van de grond af gebouwd. De data verzamelen, modelleren, analyseren en visualiseren gebeurde from scratch. Hiervoor gebruikte ik Python, PowerShell, SQL Server, Stockfish en Power BI.</p>
+            <p>Ik haalde enkele miljoenen schaakspellen uit de Lichess open source database en vergeleek die met mijn eigen schaakpartijen. Daarnaast verrijkte ik de data met extra kenmerken zoals opening, spelfase, ELO-bereik, blunders, enzovoort.</p>
+            <p>Blunders, grote fouten in een schaakspel, waren een stuk informatie dat ik per se wou hebben voor mijn analyse. Met een Python-script liet ik alle schaakspellen één voor één analyseren door de schaakengine Stockfish om telkens de blunders eruit te halen.</p>
+            <p>Daarna moesten al die blunders nog in categorieën opgedeeld worden om er een duidelijke visual van te kunnen maken. Omdat blunders categoriseren een menselijke interpretatie blijft en afhangt van de huidige situatie op het bord, gebruikte ik opnieuw een Python-script met API-calls naar OpenAI om deze taak per spel uit te voeren aan de hand van een prompt.</p>
+            <p>In Power BI bouwde ik rapportpagina’s om mijn huidige situatie te schetsen, om de beste openingen voor elke kleur te vinden en om mijn belangrijkste pijnpunten inzichtelijk te maken.</p>
+            <p><strong>Resultaat.</strong> De analyse leidde tot een concreet actieplan: langere speltypes spelen, partijen achteraf analyseren met Stockfish, gerichter openingen instuderen en schaakpuzzels oefenen rond mijn grootste zwaktes. Dit project toont hoe ruwe data kan worden omgezet naar een datamodel, interactieve rapportering en bruikbare inzichten.</p>
             <a class="button secondary document-link" href="assets/documents/schaak-analyse/schaak-analyse-paper.pdf" target="_blank" rel="noreferrer">Bekijk de volledige paper</a>
           </div>
           <div class="case-block media-grid">
