@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Goran Schittekatte</title>
+  <style>
+    :root {
+      --bg: #f7f7f4;
+      --surface: #ffffff;
+      --text: #1f2933;
+      --muted: #667085;
+      --border: #e4e7ec;
+      --accent: #263238;
+      --accent-soft: #eef2f3;
+      --shadow: 0 14px 35px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--max-width));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(247, 247, 244, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      gap: 16px;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: -0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 10px 16px;
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      opacity: 0.92;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    .button.linkedin {
+      background: #0a66c2;
+      border-color: #0a66c2;
+      color: #fff;
+    }
+
+    .button.linkedin:hover {
+      background: #004182;
+      border-color: #004182;
+      color: #fff;
+    }
+
+    .hero {
+      padding: 84px 0 32px;
+    }
+
+    .eyebrow {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.65rem, 4vw, 3.2rem);
+      line-height: 0.98;
+      letter-spacing: -0.07em;
+      max-width: 980px;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.12rem;
+      margin-bottom: 28px;
+    }
+
+    section {
+      padding: 56px 0;
+    }
+
+    #projecten {
+      padding-top: 28px;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      letter-spacing: -0.05em;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+    }
+
+    .mock-image {
+      min-height: 168px;
+      background: linear-gradient(135deg, #e9ecef, #f8fafc);
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      color: #98a2b3;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .project-card-image {
+      width: 100%;
+      height: 168px;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid var(--border);
+      background: #fff;
+    }
+
+    .project-card-image.contain {
+      height: auto;
+      object-fit: unset;
+      padding: 0;
+      background: #fff;
+    }
+
+    .project-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .project-content h3 {
+      font-size: 1.12rem;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+    }
+
+    .project-content p {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .tag {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .project-page {
+      display: none;
+      padding: 44px 0 72px;
+    }
+
+    .project-page.active,
+    .home-page.active {
+      display: block;
+    }
+
+    .home-page {
+      display: none;
+    }
+
+    .back-link {
+      display: inline-flex;
+      margin-bottom: 28px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .project-hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: clamp(24px, 5vw, 48px);
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .project-hero h1 {
+      font-size: clamp(1.45rem, 2.7vw, 2.35rem);
+      line-height: 1.05;
+      letter-spacing: -0.06em;
+      margin-bottom: 18px;
+    }
+
+    .project-hero p {
+      color: var(--muted);
+      max-width: 820px;
+      font-size: 1.05rem;
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .case-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+
+    .case-block h2 {
+      margin-bottom: 12px;
+      letter-spacing: -0.04em;
+    }
+
+    .case-block p,
+    .case-block li {
+      color: var(--muted);
+    }
+
+    .case-block p {
+      margin-bottom: 16px;
+    }
+
+    .case-block ul {
+      padding-left: 18px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .media-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .document-link {
+      margin-top: 18px;
+      width: fit-content;
+    }
+
+    .media-placeholder {
+      border: 1px dashed #cbd5e1;
+      border-radius: 16px;
+      min-height: 160px;
+      display: grid;
+      place-items: center;
+      color: #98a2b3;
+      background: #fbfcfd;
+      text-align: center;
+      padding: 16px;
+      font-weight: 700;
+    }
+
+    .media-figure {
+      display: grid;
+      gap: 8px;
+    }
+
+    .media-image {
+      width: 100%;
+      display: block;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #fff;
+    }
+
+    .media-image.clickable {
+      cursor: zoom-in;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    .media-image.clickable:hover {
+      transform: translateY(-1px);
+      opacity: 0.94;
+    }
+
+    .media-figure figcaption {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.4;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(15, 23, 42, 0.82);
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      position: relative;
+      width: min(100%, 1100px);
+      max-height: 90vh;
+      display: grid;
+      gap: 12px;
+    }
+
+    .lightbox img {
+      width: 100%;
+      max-height: 82vh;
+      object-fit: contain;
+      border-radius: 14px;
+      background: #fff;
+    }
+
+    .lightbox-caption {
+      color: #fff;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -14px;
+      right: -14px;
+      border: 1px solid rgba(255,255,255,0.4);
+      background: #fff;
+      color: var(--accent);
+      border-radius: 999px;
+      width: 38px;
+      height: 38px;
+      font-size: 1.35rem;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .project-grid,
+      .case-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .nav-links {
+        flex-wrap: nowrap;
+      }
+
+      .project-grid,
+      .case-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 56px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">Goran Schittekatte</div>
+      <nav class="nav-links">
+        <a class="button linkedin" href="https://www.linkedin.com/in/goran-schittekatte-006a83198" target="_blank" rel="noreferrer">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div id="home" class="home-page active">
+      <section class="hero">
+        <div class="container">
+          <h1>Praktische oplossingen voor slimmer werk.</h1>
+          <p>
+            Ik automatiseer repetitieve administratieve taken, optimaliseer processen en breng structuur in grote hoeveelheden data. Daarnaast kan ik die data ook analyseren en visualiseren om tot bruikbare inzichten te komen. Hieronder enkele realisaties.
+          </p>
+        </div>
+      </section>
+
+      <section id="projecten">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Projecten</h2>
+          </div>
+
+          <div class="project-grid">
+            <a class="project-card" href="#pur-database" data-route="pur-database">
+              <img src="assets/images/pur-database/pur database ERD.PNG" alt="Demo-afbeelding van het PUR Database-datamodel" class="project-card-image contain">
+              <div class="project-content">
+                <h3>PUR Database</h3>
+                <p>Relationele database voor het beheren van de 'PUR' (dossiers, afspraken, kredietnota's en historiek).</p>
+                <div class="tags">
+                  <span class="tag">Access</span>
+                  <span class="tag">Datamodel</span>
+                  <span class="tag">Datakwaliteit</span>
+                </div>
+              </div>
+            </a>
+
+            <a class="project-card" href="#pur-tool" data-route="pur-tool">
+              <img src="assets/images/pur-tool/pur tool UI.PNG" alt="Demo-afbeelding van de PUR Tool" class="project-card-image contain">
+              <div class="project-content">
+                <h3>PUR Tool</h3>
+                <p>Automatisering van complexe kredietnotaberekeningen voor de 'PUR' in Excel.</p>
+                <div class="tags">
+                  <span class="tag">Excel</span>
+                  <span class="tag">VBA</span>
+                  <span class="tag">Automatisering</span>
+                </div>
+              </div>
+            </a>
+
+            <a class="project-card" href="#owow" data-route="owow">
+              <div class="mock-image">Demo screen</div>
+              <div class="project-content">
+                <h3>OWOW – MS365 & SharePoint-adoptie</h3>
+                <p>Structuur, begeleiding en praktische toepassing bij de overgang naar een gestandaardiseerde MS365-werkwijze.</p>
+                <div class="tags">
+                  <span class="tag">MS365</span>
+                  <span class="tag">SharePoint</span>
+                  <span class="tag">Change</span>
+                </div>
+              </div>
+            </a>
+
+            <a class="project-card" href="#schaak-analyse" data-route="schaak-analyse">
+              <img src="assets/images/schaak-analyse/Demo-afbeelding-schaak.png" alt="Demo-afbeelding van het schaakproject" class="project-card-image contain">
+              <div class="project-content">
+                <h3>Verbeter je schaakspel met data: Een persoonlijke case study.</h3>
+                <p>Data-analyseproject rond schaakprestaties, opgebouwd met een eigen database en Power BI-rapport.</p>
+                <div class="tags">
+                  <span class="tag">Python</span>
+                  <span class="tag">Database</span>
+                  <span class="tag">SQL</span>
+                  <span class="tag">Power BI</span>
+                </div>
+              </div>
+            </a>
+
+            <a class="project-card" href="#vacature-analyse" data-route="vacature-analyse">
+              <div class="mock-image">Demo screen</div>
+              <div class="project-content">
+                <h3>Analyse van data-vacatures</h3>
+                <p>Toekomstig portfolio-project rond gevraagde skills, functietitels en regio’s binnen data-gerelateerde jobs.</p>
+                <div class="tags">
+                  <span class="tag">Power Query</span>
+                  <span class="tag">Power BI</span>
+                  <span class="tag">Career data</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section id="pur-tool" class="project-page">
+      <div class="container">
+        <a href="#home" class="back-link" data-route="home">← Terug naar overzicht</a>
+        <div class="project-hero">
+          <div class="eyebrow">Excel · VBA · Automatisering</div>
+          <h1>PUR Tool</h1>
+          <p>Automatisering van complexe kredietnotaberekeningen voor de 'PUR' in Excel.</p>
+        </div>
+        <div class="case-grid">
+          <div class="case-block">
+            <h2>Case study</h2>
+            <p><strong>Context.</strong> Het oorspronkelijke proces bevatte veel manuele stappen, verspreide bestanden en herhaalbare berekeningen.</p>
+            <p><strong>Mijn rol.</strong> Ik analyseerde de werkwijze, bouwde automatiseringslogica in VBA en werkte aan een herbruikbare structuur voor meerdere leveranciersscenario’s.</p>
+            <p><strong>Oplossing.</strong> De tool combineert inputbestanden, draaitabellen, controles, templates en gegenereerde outputbestanden in één gestroomlijnde flow.</p>
+            <p><strong>Resultaat.</strong> Minder manuele handelingen, consistenter resultaat en een betere basis voor verdere rapportering.</p>
+          </div>
+
+          <div class="case-block media-grid">
+            <figure class="media-figure">
+              <img src="assets/images/pur-tool/pur tool UI.PNG" alt="Interface van de PUR Tool" class="media-image clickable" data-lightbox-src="assets/images/pur-tool/pur tool UI.PNG" data-lightbox-caption="Interface van de PUR Tool.">
+              <figcaption>Interface van de PUR Tool.</figcaption>
+            </figure>
+
+            <div class="media-placeholder">Placeholder: procesflow / VBA-flow</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pur-database" class="project-page">
+      <div class="container">
+        <a href="#home" class="back-link" data-route="home">← Terug naar overzicht</a>
+        <div class="project-hero">
+          <div class="eyebrow">Access · Datamodel · Datakwaliteit</div>
+          <h1>PUR Database</h1>
+          <p>Relationele database voor het beheren van de 'PUR' (dossiers, afspraken, kredietnota's en historiek).</p>
+        </div>
+        <div class="case-grid">
+          <div class="case-block">
+            <h2>Case study</h2>
+            <p><strong>Context.</strong> De PUR is een proces waarbij leveranciers ons periodiek ondersteuning geven via kredietnota’s wanneer bepaalde commerciële afspraken met onze klanten worden toegepast. Die afspraken moeten correct geregistreerd, opgevolgd en achteraf controleerbaar blijven, samen met de kredietnota's. Tot voor kort werd alles in losse Excelbestanden geregistreerd. De PUR bijhouden was een foutgevoelige en intensieve administratieve taak. Het hele proces nam ongeveer 1/4de van mijn werktijd in beslag.</p>
+
+            <p><strong>Aanpak.</strong> Ik bouwde een Access-database om alles omtrent de PUR centraal te beheren. Het registreren van dossiers, afspraken en kredietnota's, het genereren van rapporten in Excel en het onderhouden van de database kan allemaal via het hoofdscherm dat je hieronder ziet.</p>
+
+            <p><strong>Resultaat.</strong> De database maakt de administratie van het PUR-proces minder intensief en foutgevoelig. Ze vormt een centrale bron voor dagelijks beheer, controle en latere rapportering. Slechts één gedeelte van de PUR wordt ergens anders behandeld. De berekening van de kredietnota's gebeurt in de PUR Tool (zie bijhorende projectpagina).</p>
+          </div>
+
+          <div class="case-block media-grid">
+            <figure class="media-figure">
+              <img src="assets/images/pur-database/pur database ERD.PNG" alt="ERD van de PUR Database" class="media-image clickable" data-lightbox-src="assets/images/pur-database/pur database ERD.PNG" data-lightbox-caption="ERD / datamodel van de PUR Database.">
+              <figcaption>ERD / datamodel van de PUR Database.</figcaption>
+            </figure>
+
+            <figure class="media-figure">
+              <img src="assets/images/pur-database/pur database frmstart.PNG" alt="Startscherm van de PUR Database" class="media-image clickable" data-lightbox-src="assets/images/pur-database/pur database frmstart.PNG" data-lightbox-caption="Startscherm van de PUR Database.">
+              <figcaption>Startscherm van de PUR Database.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="owow" class="project-page">
+      <div class="container">
+        <a href="#home" class="back-link" data-route="home">← Terug naar overzicht</a>
+        <div class="project-hero">
+          <div class="eyebrow">MS365 · SharePoint · Adoptie</div>
+          <h1>OWOW – MS365 & SharePoint-adoptie</h1>
+          <p>Bijdrage aan een gestandaardiseerde manier van werken met Microsoft 365, met focus op praktische toepasbaarheid voor een administratief team.</p>
+        </div>
+        <div class="case-grid">
+          <div class="case-block">
+            <h2>Case study</h2>
+            <p><strong>Context.</strong> De organisatie evolueert van klassieke opslag en werkwijzen naar een meer cloudgerichte MS365-omgeving.</p>
+            <p><strong>Mijn rol.</strong> Ik fungeerde als aanspreekpunt voor mijn team, dacht mee over structuur en vertaalde de verandering naar praktische afspraken.</p>
+            <p><strong>Oplossing.</strong> Een duidelijke SharePoint-structuur, afspraken rond Teams/OneDrive/Outlook en begeleiding voor eindgebruikers.</p>
+            <p><strong>Resultaat.</strong> Betere voorbereiding op cloud-adoptie, minder verwarring rond opslaglocaties en meer uniforme samenwerking.</p>
+          </div>
+
+          <div class="case-block media-grid">
+            <div class="media-placeholder">Placeholder: SharePoint-structuur</div>
+            <div class="media-placeholder">Placeholder: oude vs. nieuwe werkwijze</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="schaak-analyse" class="project-page">
+      <div class="container">
+        <a href="#home" class="back-link" data-route="home">← Terug naar overzicht</a>
+        <div class="project-hero">
+          <div class="eyebrow">Python · Database · SQL · Power BI</div>
+          <h1>Verbeter je schaakspel met data: Een persoonlijke case study.</h1>
+          <p>Data-analyseproject rond schaakprestaties, opgebouwd met een eigen database en Power BI-rapport.</p>
+        </div>
+
+        <div class="case-grid">
+          <div class="case-block">
+            <h2>Case study</h2>
+
+            <p><strong>Context.</strong><br>
+            Voor mijn eindwerk binnen de opleiding Data Analist onderzocht ik hoe ik mijn schaakspel kon verbeteren met behulp van data.</p>
+
+            <p>Waarom: Ik schaakte al jaren bijna dagelijks en toch steeg mijn ELO-score niet, hij daalde zelfs.<br>
+            De bedoeling van deze analyse was om tot een concreet plan van aanpak te komen, wat ik dan in de praktijk zou toepassen.</p>
+
+            <p><strong>Aanpak.</strong><br>
+            Dit project werd volledig van de grond af gebouwd.<br>
+            De data verzamelen, modelleren, analyseren en visualiseren gebeurde 'from scratch'.<br>
+            Hiervoor gebruikte ik Python, PowerShell, SQL Server, Stockfish en Power BI.</p>
+
+            <p>Ik haalde enkele miljoenen schaakspellen uit de Lichess open source database en vergeleek die met mijn eigen schaakpartijen. Daarnaast verrijkte ik de data met extra kenmerken zoals opening, spelfase, ELO-bereik, blunders, enzovoort.</p>
+
+            <p>Blunders (=grote fouten in een schaakspel) bijvoorbeeld, was een stuk informatie dat ik per se wou hebben voor mijn analyse.<br>
+            Zo heb ik met een Python-script alle schaakspellen één voor één laten analyseren door de schaakengine Stockfish om zo telkens de blunders eruit te halen.</p>
+
+            <p>Daarna moesten al die blunders nog in categorieën opgedeeld worden om er een duidelijke visual van te kunnen maken. Gezien blunders categoriseren een redelijk menselijke interpretatie is (het hangt altijd af van de huidige situatie op het bord), moest er terug een Python-script uitgevoerd worden, met daarin API-calls naar OpenAI om deze taak per spel uit te voeren a.d.h.v. een prompt.</p>
+
+            <p>In Power BI bouwde ik rapportpagina’s om mijn huidige situatie te schetsen, om de beste openingen voor elke kleur te vinden en om mijn belangrijkste pijnpunten inzichtelijk te maken.</p>
+
+            <p><strong>Resultaat.</strong><br>
+            De analyse leidde tot een concreet actieplan: langere speltypes spelen, partijen achteraf analyseren met Stockfish, gerichter openingen instuderen en schaakpuzzels oefenen rond mijn grootste zwaktes. Dit project toont hoe ruwe data kan worden omgezet naar een datamodel, interactieve rapportering en bruikbare inzichten.</p>
+
+            <a class="button secondary document-link" href="assets/documents/schaak-analyse/schaak-analyse-paper.pdf" target="_blank" rel="noreferrer">Bekijk de volledige paper</a>
+          </div>
+
+          <div class="case-block media-grid">
+            <figure class="media-figure">
+              <img src="assets/images/schaak-analyse/schaak-dashboard-overzicht.png" alt="Situatieschets van de schaakprestatie-analyse" class="media-image clickable" data-lightbox-src="assets/images/schaak-analyse/schaak-dashboard-overzicht.png" data-lightbox-caption="Reden van dit project: Mijn schaakspel verbetert niet. Integendeel!">
+              <figcaption>Reden van dit project: Mijn schaakspel verbetert niet. Integendeel!</figcaption>
+            </figure>
+
+            <figure class="media-figure">
+              <img src="assets/images/schaak-analyse/schaak-dashboard-analyse.png" alt="Analyse van de grootste pijnpunten in het schaakrapport" class="media-image clickable" data-lightbox-src="assets/images/schaak-analyse/schaak-dashboard-analyse.png" data-lightbox-caption="Analyse: mijn grootste pijnpunten.">
+              <figcaption>Analyse: mijn grootste pijnpunten.</figcaption>
+            </figure>
+
+            <figure class="media-figure">
+              <img src="assets/images/schaak-analyse/schaak-dashboard-openingen.png" alt="Analyse van de beste schaakopeningen" class="media-image clickable" data-lightbox-src="assets/images/schaak-analyse/schaak-dashboard-openingen.png" data-lightbox-caption="Analyse: Wat zijn de beste schaakopeningen?">
+              <figcaption>Analyse: Wat zijn de beste schaakopeningen?</figcaption>
+            </figure>
+
+            <figure class="media-figure">
+              <img src="assets/images/schaak-analyse/schaak-datamodel-erd.png" alt="ERD van het schaakproject in Power BI" class="media-image clickable" data-lightbox-src="assets/images/schaak-analyse/schaak-datamodel-erd.png" data-lightbox-caption="ERD: Hoe de data gemodelleerd is.">
+              <figcaption>ERD: Hoe de data gemodelleerd is.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="vacature-analyse" class="project-page">
+      <div class="container">
+        <a href="#home" class="back-link" data-route="home">← Terug naar overzicht</a>
+        <div class="project-hero">
+          <div class="eyebrow">Power Query · Power BI · Arbeidsmarktanalyse</div>
+          <h1>Analyse van data-vacatures</h1>
+          <p>Een toekomstig portfolio-project rond data-gerelateerde vacatures, gevraagde skills, functietitels en regio’s.</p>
+        </div>
+        <div class="case-grid">
+          <div class="case-block">
+            <h2>Case study</h2>
+            <p><strong>Context.</strong> Dit project onderzoekt welke skills en functietitels vaak terugkomen in data-gerelateerde vacatures.</p>
+            <p><strong>Mijn rol.</strong> Dataset samenstellen, data opschonen, categoriseren en visualiseren in een dashboard.</p>
+            <p><strong>Oplossing.</strong> Analyse van functietitels, tools, regio’s en vereiste vaardigheden.</p>
+            <p><strong>Status.</strong> Project nog te bouwen. Deze pagina dient voorlopig als placeholder.</p>
+          </div>
+
+          <div class="case-block media-grid">
+            <div class="media-placeholder">Placeholder: vacature-dashboard</div>
+            <div class="media-placeholder">Placeholder: skill-analyse</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Afbeelding sluiten">×</button>
+      <img id="lightboxImage" src="" alt="Uitvergrote afbeelding">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Goran Schittekatte · Persoonlijk portfolio · Projecten met bedrijfscontext zijn geanonimiseerd.
+    </div>
+  </footer>
+
+  <script>
+    const pages = document.querySelectorAll('.home-page, .project-page');
+    const routeLinks = document.querySelectorAll('[data-route]');
+    const year = document.getElementById('year');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    year.textContent = new Date().getFullYear();
+
+    function showRoute(route) {
+      pages.forEach(page => page.classList.remove('active'));
+
+      if (!route || route === 'home') {
+        document.getElementById('home').classList.add('active');
+        return;
+      }
+
+      const target = document.getElementById(route);
+      if (target) {
+        target.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        document.getElementById('home').classList.add('active');
+      }
+    }
+
+    routeLinks.forEach(link => {
+      link.addEventListener('click', event => {
+        const route = link.getAttribute('data-route');
+        if (!route) return;
+        event.preventDefault();
+        history.pushState(null, '', route === 'home' ? '#home' : `#${route}`);
+        showRoute(route);
+      });
+    });
+
+    window.addEventListener('popstate', () => {
+      const route = location.hash.replace('#', '') || 'home';
+      showRoute(route);
+    });
+
+    document.querySelectorAll('[data-lightbox-src]').forEach(image => {
+      image.addEventListener('click', () => {
+        lightboxImage.src = image.getAttribute('data-lightbox-src');
+        lightboxCaption.textContent = image.getAttribute('data-lightbox-caption') || image.alt || '';
+        lightbox.classList.add('active');
+        lightbox.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImage.src = '';
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+
+    lightbox.addEventListener('click', event => {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    window.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+
+    const initialRoute = location.hash.replace('#', '') || 'home';
+    showRoute(initialRoute);
+  </script>
+</body>
+              </html>
